@@ -16,18 +16,45 @@
 
 package com.saadahmedev.popupdialog.dialog.status;
 
+import androidx.annotation.NonNull;
+
 import com.saadahmedev.popupdialog.PopupDialog;
 import com.saadahmedev.popupdialog.R;
 import com.saadahmedev.popupdialog.base.BaseStatusDialog;
 import com.saadahmedev.popupdialog.databinding.DialogStatusBinding;
 
+/**
+ * A dialog class for displaying a success status dialog.
+ * <p>
+ * This dialog extends {@link BaseStatusDialog} and provides functionalities for creating success status dialogs.
+ * It sets the appropriate Lottie animation icon for representing success, along with other customization options
+ * available in the base class. It serves as a specialized dialog for indicating successful operations or states.
+ *
+ * @author <a href="https://github.com/saadahmedscse">Saad Ahmed</a>
+ *
+ * @see StatusDialog
+ * @see ErrorDialog
+ * @see WarningDialog
+ */
 public class SuccessDialog extends BaseStatusDialog<SuccessDialog, DialogStatusBinding> {
 
+    /**
+     * Constructs a new {@link SuccessDialog}.
+     *
+     * @param popupDialog The {@link PopupDialog} associated with this {@link SuccessDialog}.
+     */
     private SuccessDialog(PopupDialog popupDialog) {
         super(popupDialog, R.layout.dialog_status);
         super.setLottieIcon(R.raw.success);
     }
 
+    /**
+     * Gets an instance of the {@link SuccessDialog}.
+     *
+     * @param popupDialog The {@link PopupDialog} associated with this {@link SuccessDialog}.
+     * @return An instance of the {@link SuccessDialog}.
+     */
+    @NonNull
     public static SuccessDialog getInstance(PopupDialog popupDialog) {
         return new SuccessDialog(popupDialog);
     }

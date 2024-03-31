@@ -21,8 +21,22 @@ import android.widget.ImageView;
 import androidx.annotation.DrawableRes;
 import androidx.databinding.BindingAdapter;
 
+/**
+ * Utility class for binding image resources to ImageViews in XML layouts.
+ * <p>
+ * This class provides a method to set an icon for a dialog ImageView using data binding.
+ * It handles the case where the icon resource ID is null to avoid setting a null icon.
+ *
+ * @author <a href="https://github.com/saadahmedscse">Saad Ahmed</a>
+ */
 public class ImageBinder {
 
+    /**
+     * Sets the icon for a dialog ImageView using data binding.
+     *
+     * @param imageView The ImageView to which the icon will be set.
+     * @param icon      The resource ID of the icon to be set.
+     */
     @BindingAdapter("android:popupIcon")
     public static void setDialogIcon(ImageView imageView, @DrawableRes Integer icon) {
         if (icon != null) {

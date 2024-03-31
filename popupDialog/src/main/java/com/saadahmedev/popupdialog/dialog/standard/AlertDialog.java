@@ -23,16 +23,44 @@ import com.saadahmedev.popupdialog.databinding.DialogAlertBinding;
 import com.saadahmedev.popupdialog.dto.AlertDialogData;
 import com.saadahmedev.popupdialog.listener.StandardDialogActionListener;
 
+/**
+ * A dialog class for displaying an alert dialog or Android default dialog.
+ * <p>
+ * This dialog extends {@link BaseStandardDialog} and provides functionalities for creating customizable alert dialogs
+ * with options for positive and negative actions.
+ *
+ * @author <a href="https://github.com/saadahmedscse">Saad Ahmed</a>
+ *
+ * @see StandardDialog
+ * @see IOSDialog
+ */
 public class AlertDialog extends BaseStandardDialog<AlertDialog, DialogAlertBinding> {
 
+    /**
+     * Constructs a new {@link AlertDialog}.
+     *
+     * @param popupDialog The PopupDialog associated with this {@link AlertDialog}.
+     */
     private AlertDialog(PopupDialog popupDialog) {
         super(popupDialog, R.layout.dialog_alert);
     }
 
+    /**
+     * Gets an instance of the {@link AlertDialog}.
+     *
+     * @param popupDialog The {@link PopupDialog} associated with this {@link AlertDialog}.
+     * @return An instance of the {@link AlertDialog}.
+     */
     public static AlertDialog getInstance(PopupDialog popupDialog) {
         return new AlertDialog(popupDialog);
     }
 
+    /**
+     * Builds and displays the {@link AlertDialog}.
+     *
+     * @param listener The listener for dialog actions.
+     * @return The built {@link AlertDialog}.
+     */
     @Override
     public PopupDialog build(StandardDialogActionListener listener) {
         super.build(listener);
@@ -48,8 +76,7 @@ public class AlertDialog extends BaseStandardDialog<AlertDialog, DialogAlertBind
 
         if (super.background != null) {
             binding.layoutRoot.setBackgroundResource(super.background);
-        }
-        else if (super.backgroundColor != null) {
+        } else if (super.backgroundColor != null) {
             binding.layoutRoot.setBackground(
                     getBackground(
                             backgroundColor,

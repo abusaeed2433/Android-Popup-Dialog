@@ -17,7 +17,6 @@
 package com.saadahmedev.popupdialog.dialog.progress;
 
 import android.content.res.ColorStateList;
-import android.graphics.PorterDuff;
 
 import androidx.annotation.ColorRes;
 import androidx.annotation.NonNull;
@@ -29,28 +28,68 @@ import com.saadahmedev.popupdialog.base.BaseDialogBinder;
 import com.saadahmedev.popupdialog.databinding.DialogProgressBinding;
 import com.saadahmedev.popupdialog.dialogType.ProgressTypeDialog;
 
+/**
+ * A dialog class for displaying a progress bar dialog.
+ * <p>
+ * This dialog allows displaying a progress bar with optional tinting for customization.
+ * <p>
+ * This class extends {@link BaseDialogBinder} to leverage common dialog functionalities.
+ * @author <a href="https://github.com/saadahmedscse">Saad Ahmed</a>
+ * @see BaseDialogBinder
+ */
 public class ProgressDialog extends BaseDialogBinder<ProgressDialog, DialogProgressBinding> {
 
+    /**
+     * The {@link ProgressTypeDialog} associated with this Progress dialog.
+     */
     private final ProgressTypeDialog progressTypeDialog;
 
+    /**
+     * The color resource ID for tinting the progress bar.
+     */
     private Integer tint;
 
-    private ProgressDialog(ProgressTypeDialog progressTypeDialog) {
+    /**
+     * Constructs a new {@link ProgressDialog}.
+     *
+     * @param progressTypeDialog The progress type dialog associated with this {@link ProgressDialog}.
+     */
+    private ProgressDialog(@NonNull ProgressTypeDialog progressTypeDialog) {
         super(progressTypeDialog.getPopupDialog(), R.layout.dialog_progress);
         this.progressTypeDialog = progressTypeDialog;
     }
 
-    public static ProgressDialog getInstance(ProgressTypeDialog progressTypeDialog) {
+    /**
+     * Gets an instance of the {@link ProgressDialog}.
+     *
+     * @param progressTypeDialog The progress type dialog associated with this {@link ProgressDialog}.
+     * @return An instance of the {@link ProgressDialog}.
+     */
+    @NonNull
+    public static ProgressDialog getInstance(@NonNull ProgressTypeDialog progressTypeDialog) {
         return new ProgressDialog(progressTypeDialog);
     }
 
+    /**
+     * Sets the tint color for the progress bar.
+     *
+     * @param tint The color resource ID for tinting the progress bar.
+     * @return The current instance of the {@link ProgressDialog}.
+     */
     public ProgressDialog setTint(@NonNull @ColorRes Integer tint) {
         this.tint = tint;
         return this;
     }
 
+    /**
+     * Builds the {@link ProgressDialog}.
+     *
+     * @return The built {@link PopupDialog}.
+     */
     public PopupDialog build() {
-        if (tint != null) binding.progressBar.setIndeterminateTintList(ColorStateList.valueOf(ContextCompat.getColor(getContext(), this.tint)));
+        if (tint != null) {
+            binding.progressBar.setIndeterminateTintList(ColorStateList.valueOf(ContextCompat.getColor(getContext(), this.tint)));
+        }
 
         return progressTypeDialog.getPopupDialog();
     }

@@ -21,13 +21,37 @@ import com.saadahmedev.popupdialog.R;
 import com.saadahmedev.popupdialog.base.BaseStatusDialog;
 import com.saadahmedev.popupdialog.databinding.DialogStatusBinding;
 
+/**
+ * A dialog class for displaying an error status dialog.
+ * <p>
+ * This dialog extends {@link BaseStatusDialog} and provides functionalities for creating error status dialogs.
+ * It is specifically designed to display error messages or alerts to the user. The dialog includes an error
+ * icon animation and can be customized further based on requirements.
+ *
+ * @author <a href="https://github.com/saadahmedscse">Saad Ahmed</a>
+ *
+ * @see StatusDialog
+ * @see SuccessDialog
+ * @see WarningDialog
+ */
 public class ErrorDialog extends BaseStatusDialog<ErrorDialog, DialogStatusBinding> {
 
+    /**
+     * Constructs a new {@link ErrorDialog}.
+     *
+     * @param popupDialog The {@link PopupDialog} associated with this {@link ErrorDialog}.
+     */
     private ErrorDialog(PopupDialog popupDialog) {
         super(popupDialog, R.layout.dialog_status);
         super.setLottieIcon(R.raw.failed);
     }
 
+    /**
+     * Gets an instance of the {@link ErrorDialog}.
+     *
+     * @param popupDialog The {@link PopupDialog} associated with this {@link ErrorDialog}.
+     * @return An instance of the {@link ErrorDialog}.
+     */
     public static ErrorDialog getInstance(PopupDialog popupDialog) {
         return new ErrorDialog(popupDialog);
     }

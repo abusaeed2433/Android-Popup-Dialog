@@ -23,28 +23,71 @@ import com.saadahmedev.popupdialog.dialog.status.StatusDialog;
 import com.saadahmedev.popupdialog.dialog.status.SuccessDialog;
 import com.saadahmedev.popupdialog.dialog.status.WarningDialog;
 
+/**
+ * A dialog class representing a status type dialog.
+ * <p>
+ * This dialog serves as a base class for creating different types of status dialogs.
+ * It provides methods to create instances of specific status dialog types such as {@link StatusDialog}, {@link SuccessDialog}, {@link WarningDialog}, and {@link ErrorDialog}.
+ *
+ * @author <a href="https://github.com/saadahmedscse">Saad Ahmed</a>
+ * @see StatusDialog
+ * @see SuccessDialog
+ * @see WarningDialog
+ * @see ErrorDialog
+ */
 public class StatusTypeDialog extends BaseDialog<StandardTypeDialog> {
 
+    /**
+     * Constructs a new StatusTypeDialog.
+     *
+     * @param popupDialog The PopupDialog associated with this StatusTypeDialog.
+     */
     private StatusTypeDialog(PopupDialog popupDialog) {
         super(popupDialog);
     }
 
+    /**
+     * Gets an instance of the StatusTypeDialog.
+     *
+     * @param popupDialog The PopupDialog associated with this StatusTypeDialog.
+     * @return An instance of the StatusTypeDialog.
+     */
     public static StatusTypeDialog getInstance(PopupDialog popupDialog) {
         return new StatusTypeDialog(popupDialog);
     }
 
+    /**
+     * Creates a new StatusDialog instance.
+     *
+     * @return A new StatusDialog instance.
+     */
     public StatusDialog createStatusDialog() {
         return StatusDialog.getInstance(super.getPopupDialog());
     }
 
+    /**
+     * Creates a new SuccessDialog instance.
+     *
+     * @return A new SuccessDialog instance.
+     */
     public SuccessDialog createSuccessDialog() {
         return SuccessDialog.getInstance(super.getPopupDialog());
     }
 
+    /**
+     * Creates a new WarningDialog instance.
+     *
+     * @return A new WarningDialog instance.
+     */
     public WarningDialog createWarningDialog() {
         return WarningDialog.getInstance(super.getPopupDialog());
     }
 
+    /**
+     * Creates a new ErrorDialog instance.
+     *
+     * @return A new ErrorDialog instance.
+     */
     public ErrorDialog createErrorDialog() {
         return ErrorDialog.getInstance(super.getPopupDialog());
     }

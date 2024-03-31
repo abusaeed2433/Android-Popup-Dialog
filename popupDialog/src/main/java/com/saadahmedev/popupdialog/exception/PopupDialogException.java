@@ -16,8 +16,22 @@
 
 package com.saadahmedev.popupdialog.exception;
 
+/**
+ * Exception class to handle errors related to PopupDialog.
+ * <p>
+ * This exception class extends {@link RuntimeException} and is used to handle errors
+ * specifically related to the PopupDialog functionality. It allows for custom error messages
+ * to be provided when throwing instances of this exception.
+ *
+ * @author <a href="https://github.com/saadahmedscse">Saad Ahmed</a>
+ */
 public class PopupDialogException extends RuntimeException {
 
+    /**
+     * Constructs a new PopupDialogException with the specified detail message.
+     *
+     * @param message the detail message (which is saved for later retrieval by the Throwable.getMessage() method).
+     */
     public PopupDialogException(String message) {
         super(message);
     }
