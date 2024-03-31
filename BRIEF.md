@@ -1,3 +1,4 @@
+```java
 package com.caffeine.popupdialog.util;
 
 import android.app.Dialog;
@@ -6,7 +7,10 @@ import android.content.Context;
 import com.caffeine.popupdialog.R;
 import com.saadahmedev.popupdialog.PopupDialog;
 import com.saadahmedev.popupdialog.listener.StandardDialogActionListener;
-import com.saadahmedev.popupdialog.listener.StatusDialogActionListener;
+
+// Tried to cover up all properties
+// But because of in v 2.0.0 I've added a lot of functions so it is tough to to show all
+// properties here. So, it will be better if you explore them by yourself.
 
 public class DialogUtil {
 
@@ -62,12 +66,20 @@ public class DialogUtil {
 //                .setBackgroundColor(R.color.teal_200)
 //                .setBackgroundCornerRadius(50F)
 //                .setBackgroundCornerRadius(50F, 10F, 10F, 50F)
+//                .setFontFamily(R.font.roboto)
+//                .setHeadingFont(R.font.roboto)
+//                .setDescriptionFont(R.font.roboto)
+//                .setButtonFont(R.font.roboto)
+//                .setHeadingFontSize(25F)
+//                .setDescriptionFontSize(25F)
+//                .setButtonFontSize(25F)
 
                 .build(new StandardDialogActionListener() {
                     @Override
                     public void onPositiveButtonClicked(Dialog dialog) {
                         dialog.dismiss();
                     }
+
                     @Override
                     public void onNegativeButtonClicked(Dialog dialog) {
                         dialog.dismiss();
@@ -98,6 +110,7 @@ public class DialogUtil {
                     public void onPositiveButtonClicked(Dialog dialog) {
                         dialog.dismiss();
                     }
+
                     @Override
                     public void onNegativeButtonClicked(Dialog dialog) {
                         dialog.dismiss();
@@ -128,6 +141,7 @@ public class DialogUtil {
                     public void onPositiveButtonClicked(Dialog dialog) {
                         dialog.dismiss();
                     }
+
                     @Override
                     public void onNegativeButtonClicked(Dialog dialog) {
                         dialog.dismiss();
@@ -179,3 +193,4 @@ public class DialogUtil {
                 .show();
     }
 }
+```
