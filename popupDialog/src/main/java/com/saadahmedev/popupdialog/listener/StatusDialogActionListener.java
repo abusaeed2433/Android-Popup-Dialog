@@ -18,6 +18,20 @@ package com.saadahmedev.popupdialog.listener;
 
 import android.app.Dialog;
 
+/**
+ * Interface for handling actions performed on a StatusDialog.
+ * <p>
+ * This interface defines a method to handle actions performed on a StatusDialog,
+ * such as clicking the action button.
+ *
+ * @author <a href="https://github.com/saadahmedscse">Saad Ahmed</a>
+ */
 public interface StatusDialogActionListener {
+
+    /**
+     * Called when the action button of the dialog is clicked.
+     *
+     * @param dialog The dialog on which the action button was clicked.
+     */
     void onStatusActionClicked(Dialog dialog);
 }

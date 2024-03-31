@@ -23,16 +23,44 @@ import com.saadahmedev.popupdialog.databinding.DialogIosBinding;
 import com.saadahmedev.popupdialog.dto.IOSDialogData;
 import com.saadahmedev.popupdialog.listener.StandardDialogActionListener;
 
+/**
+ * A dialog class for displaying an iOS-style dialog.
+ * <p>
+ * This dialog extends {@link BaseStandardDialog} and provides functionalities for creating customizable iOS-style dialogs
+ * with options for positive and negative actions.
+ *
+ * @author <a href="https://github.com/saadahmedscse">Saad Ahmed</a>
+ *
+ * @see StandardDialog
+ * @see AlertDialog
+ */
 public class IOSDialog extends BaseStandardDialog<IOSDialog, DialogIosBinding> {
 
+    /**
+     * Constructs a new {@link IOSDialog}.
+     *
+     * @param popupDialog The {@link PopupDialog} associated with this {@link IOSDialog}.
+     */
     private IOSDialog(PopupDialog popupDialog) {
         super(popupDialog, R.layout.dialog_ios);
     }
 
+    /**
+     * Gets an instance of the {@link IOSDialog}.
+     *
+     * @param popupDialog The {@link PopupDialog} associated with this {@link IOSDialog}.
+     * @return An instance of the {@link IOSDialog}.
+     */
     public static IOSDialog getInstance(PopupDialog popupDialog) {
         return new IOSDialog(popupDialog);
     }
 
+    /**
+     * Builds and displays the {@link IOSDialog}.
+     *
+     * @param listener The listener for dialog actions.
+     * @return The built {@link PopupDialog}.
+     */
     @Override
     public PopupDialog build(StandardDialogActionListener listener) {
         super.build(listener);
@@ -48,8 +76,7 @@ public class IOSDialog extends BaseStandardDialog<IOSDialog, DialogIosBinding> {
 
         if (super.background != null) {
             binding.rootLayout.setBackgroundResource(super.background);
-        }
-        else if (super.backgroundColor != null) {
+        } else if (super.backgroundColor != null) {
             binding.rootLayout.setBackground(
                     getBackground(
                             super.backgroundColor,

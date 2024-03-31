@@ -23,21 +23,57 @@ import com.saadahmedev.popupdialog.R;
 import com.saadahmedev.popupdialog.base.BaseStatusDialog;
 import com.saadahmedev.popupdialog.databinding.DialogStandardBinding;
 
+/**
+ * A dialog class for displaying a status dialog.
+ * <p>
+ * This dialog extends {@link BaseStatusDialog} and provides functionalities for creating status dialogs,
+ * which can represent various states such as success, error, or warning. It serves as a base class for
+ * creating specific status dialogs and allows customization of the Lottie animation icon.
+ *
+ * @author <a href="https://github.com/saadahmedscse">Saad Ahmed</a>
+ *
+ * @see ErrorDialog
+ * @see SuccessDialog
+ * @see WarningDialog
+ */
 public class StatusDialog extends BaseStatusDialog<StatusDialog, DialogStandardBinding> {
 
+    /**
+     * Constructs a new {@link StatusDialog}.
+     *
+     * @param popupDialog The {@link PopupDialog} associated with this {@link StatusDialog}.
+     */
     private StatusDialog(PopupDialog popupDialog) {
         super(popupDialog, R.layout.dialog_status);
     }
 
+    /**
+     * Gets an instance of the {@link StatusDialog}.
+     *
+     * @param popupDialog The {@link PopupDialog} associated with this {@link StatusDialog}.
+     * @return An instance of the {@link StatusDialog}.
+     */
     public static StatusDialog getInstance(PopupDialog popupDialog) {
         return new StatusDialog(popupDialog);
     }
 
+    /**
+     * Sets the Lottie animation resource for the dialog.
+     *
+     * @param lottieRaw The resource ID of the Lottie animation.
+     * @return The {@link StatusDialog} instance.
+     */
     @Override
     public StatusDialog setLottieIcon(@NonNull Integer lottieRaw) {
         return super.setLottieIcon(lottieRaw);
     }
 
+    /**
+     * Sets the Lottie animation asset for the dialog.
+     *
+     * @param lottieAsset The file path of the Lottie animation asset.
+     * @return The {@link StatusDialog} instance.
+     */
     @Override
     public StatusDialog setLottieIcon(@NonNull String lottieAsset) {
         return super.setLottieIcon(lottieAsset);

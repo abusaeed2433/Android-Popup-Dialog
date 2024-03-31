@@ -16,16 +16,46 @@
 
 package com.saadahmedev.popupdialog.dto;
 
+/**
+ * Represents the data for a standard dialog.
+ * <p>
+ * This class extends {@link BaseStandardDialogData} and provides additional data elements
+ * specific to a standard dialog, such as the resource ID of the icon displayed in the dialog.
+ * It encapsulates various properties including heading text, description text, text colors for heading
+ * and description, as well as text colors and labels for positive and negative buttons.
+ *
+ * @author <a href="https://github.com/saadahmedscse">Saad Ahmed</a>
+ */
 public class StandardDialogData extends BaseStandardDialogData {
 
+    /**
+     * The resource ID of the icon displayed in the dialog.
+     */
     private final Integer icon;
 
+    /**
+     * Constructs a new StandardDialogData object.
+     *
+     * @param icon                    The resource ID of the icon displayed in the dialog.
+     * @param heading                 The heading text of the dialog.
+     * @param description             The description text of the dialog.
+     * @param headingTextColor        The text color of the heading.
+     * @param descriptionTextColor    The text color of the description.
+     * @param positiveButtonTextColor The text color of the positive button.
+     * @param negativeButtonTextColor The text color of the negative button.
+     * @param positiveButtonText      The text for the positive button.
+     * @param negativeButtonText      The text for the negative button.
+     */
     public StandardDialogData(Integer icon, String heading, String description, Integer headingTextColor, Integer descriptionTextColor, Integer positiveButtonTextColor, Integer negativeButtonTextColor, String positiveButtonText, String negativeButtonText) {
         super(heading, description, headingTextColor, descriptionTextColor, positiveButtonTextColor, negativeButtonTextColor, positiveButtonText, negativeButtonText);
         this.icon = icon;
     }
 
-
+    /**
+     * Retrieves the resource ID of the icon displayed in the dialog.
+     *
+     * @return The resource ID of the icon.
+     */
     public Integer getIcon() {
         return icon;
     }

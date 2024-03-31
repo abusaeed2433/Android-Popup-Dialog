@@ -18,8 +18,27 @@ package com.saadahmedev.popupdialog.listener;
 
 import android.app.Dialog;
 
+/**
+ * Interface for handling actions performed on a StandardDialog.
+ * <p>
+ * This interface defines methods to handle actions performed on a StandardDialog,
+ * such as clicking the positive or negative button.
+ *
+ * @author <a href="https://github.com/saadahmedscse">Saad Ahmed</a>
+ */
 public interface StandardDialogActionListener {
+
+    /**
+     * Called when the positive button of the dialog is clicked.
+     *
+     * @param dialog The dialog on which the positive button was clicked.
+     */
     void onPositiveButtonClicked(Dialog dialog);
 
+    /**
+     * Called when the negative button of the dialog is clicked.
+     *
+     * @param dialog The dialog on which the negative button was clicked.
+     */
     void onNegativeButtonClicked(Dialog dialog);
 }

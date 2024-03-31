@@ -24,8 +24,25 @@ import androidx.annotation.ColorRes;
 import androidx.core.content.ContextCompat;
 import androidx.databinding.BindingAdapter;
 
+/**
+ * Utility class for binding text color to TextViews in XML layouts.
+ * <p>
+ * This class provides a method to set the text color for a dialog TextView using data binding.
+ * It handles the case where the color resource ID is null to avoid setting a null color.
+ * If the color resource is not found, it sets the text color directly using the provided color ID.
+ * <p>
+ * Note: This class suppresses lint warnings for resource colors.
+ *
+ * @author <a href="https://github.com/saadahmedscse">Saad Ahmed</a>
+ */
 public class TextBinder {
 
+    /**
+     * Sets the text color for a dialog TextView using data binding.
+     *
+     * @param textView The TextView to which the text color will be set.
+     * @param color    The resource ID of the text color to be set.
+     */
     @SuppressLint("ResourceAsColor")
     @BindingAdapter("android:dialogTextColor")
     public static void setDialogTextColor(TextView textView, @ColorRes Integer color) {

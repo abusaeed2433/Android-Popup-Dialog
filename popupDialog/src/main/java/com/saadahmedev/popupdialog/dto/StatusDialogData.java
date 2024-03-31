@@ -16,7 +16,27 @@
 
 package com.saadahmedev.popupdialog.dto;
 
+/**
+ * Represents the data for a status dialog.
+ * <p>
+ * This class extends {@link BaseStatusDialogData} and provides specific data elements required
+ * for constructing a status dialog. It includes heading text, description text, text colors for
+ * heading and description, as well as text color and label for the action button. It serves as a
+ * container for storing information necessary to create a status dialog.
+ *
+ * @author <a href="https://github.com/saadahmedscse">Saad Ahmed</a>
+ */
 public class StatusDialogData extends BaseStatusDialogData {
+    /**
+     * Constructs a new StatusDialogData object.
+     *
+     * @param heading             The heading text of the dialog.
+     * @param description         The description text of the dialog.
+     * @param headingTextColor    The text color of the heading.
+     * @param descriptionTextColor The text color of the description.
+     * @param actionButtonTextColor The text color of the action button.
+     * @param actionButtonText   The text for the action button.
+     */
     public StatusDialogData(String heading, String description, Integer headingTextColor, Integer descriptionTextColor, Integer actionButtonTextColor, String actionButtonText) {
         super(heading, description, headingTextColor, descriptionTextColor, actionButtonTextColor, actionButtonText);
     }

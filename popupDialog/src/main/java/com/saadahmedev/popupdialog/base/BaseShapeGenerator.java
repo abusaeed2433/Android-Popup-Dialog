@@ -28,12 +28,39 @@ import androidx.databinding.ViewDataBinding;
 
 import com.saadahmedev.popupdialog.PopupDialog;
 
+/**
+ * BaseShapeGenerator is an abstract class that extends {@link BaseDialogBinder} and provides methods
+ * for generating drawable shapes for dialogs, such as rounded rectangles. It also includes
+ * methods for converting color resources to integer values, creating {@link RippleDrawable} objects,
+ * and converting dimension resources to float values.
+ *
+ * @param <T>  The type of the {@link PopupDialog}.
+ * @param <VB> The type of {@link ViewDataBinding} associated with the layout resource.
+ * @author <a href="https://github.com/saadahmedscse">Saad Ahmed</a>
+ * @see BaseDialogBinder
+ */
 public class BaseShapeGenerator<T, VB extends ViewDataBinding> extends BaseDialogBinder<T, VB> {
 
+    /**
+     * Constructs a new BaseShapeGenerator instance with the provided PopupDialog and layout resource.
+     *
+     * @param popupDialog The {@link PopupDialog} instance to associate with this shape generator.
+     * @param layout      The layout resource ID to inflate for this shape generator.
+     */
     protected BaseShapeGenerator(PopupDialog popupDialog, @NonNull @LayoutRes Integer layout) {
         super(popupDialog, layout);
     }
 
+    /**
+     * Generates a GradientDrawable with the specified background color and corner radii.
+     *
+     * @param backgroundColor The background color of the drawable.
+     * @param topLeft         The radius of the top-left corner.
+     * @param topRight        The radius of the top-right corner.
+     * @param bottomLeft      The radius of the bottom-left corner.
+     * @param bottomRight     The radius of the bottom-right corner.
+     * @return A GradientDrawable representing the generated shape.
+     */
     protected GradientDrawable getBackground(
             Integer backgroundColor,
             Float topLeft,
@@ -59,10 +86,23 @@ public class BaseShapeGenerator<T, VB extends ViewDataBinding> extends BaseDialo
         return shape;
     }
 
+    /**
+     * Converts a color resource ID to its corresponding integer color value.
+     *
+     * @param color The color resource ID to convert.
+     * @return The integer value representing the color.
+     */
     protected Integer resToColorInt(@NonNull @ColorRes Integer color) {
         return ContextCompat.getColor(super.getContext(), color);
     }
 
+    /**
+     * Creates a {@link RippleDrawable} with the specified shape and ripple color.
+     *
+     * @param shape       The shape drawable to apply the ripple effect to.
+     * @param rippleColor The color of the ripple effect.
+     * @return A {@link RippleDrawable} with the specified properties.
+     */
     protected RippleDrawable getRipple(GradientDrawable shape, Integer rippleColor) {
         return new RippleDrawable(
                 ColorStateList.valueOf(ContextCompat.getColor(super.getContext(), rippleColor)),
@@ -71,6 +111,12 @@ public class BaseShapeGenerator<T, VB extends ViewDataBinding> extends BaseDialo
         );
     }
 
+    /**
+     * Converts a dimension resource ID to its corresponding float value.
+     *
+     * @param dimen The dimension resource ID to convert.
+     * @return The float value representing the dimension.
+     */
     protected float dimenToFloat(Integer dimen) {
         return super.getContext().getResources().getDimension(dimen);
     }

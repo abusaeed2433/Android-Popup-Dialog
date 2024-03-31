@@ -21,20 +21,51 @@ import com.saadahmedev.popupdialog.PopupDialog;
 import com.saadahmedev.popupdialog.dialog.progress.ProgressDialog;
 import com.saadahmedev.popupdialog.base.BaseDialog;
 
+/**
+ * A dialog class representing a progress type dialog.
+ * <p>
+ * This dialog serves as a base class for creating different types of progress dialogs.
+ * It provides methods to create instances of specific progress dialog types such as {@link ProgressDialog} and {@link LottieDialog}.
+ *
+ * @author <a href="https://github.com/saadahmedscse">Saad Ahmed</a>
+ * @see ProgressDialog
+ * @see LottieDialog
+ */
 public class ProgressTypeDialog extends BaseDialog<ProgressTypeDialog> {
 
+    /**
+     * Constructs a new ProgressTypeDialog.
+     *
+     * @param popupDialog The PopupDialog associated with this ProgressTypeDialog.
+     */
     private ProgressTypeDialog(PopupDialog popupDialog) {
         super(popupDialog);
     }
 
+    /**
+     * Gets an instance of the ProgressTypeDialog.
+     *
+     * @param popupDialog The PopupDialog associated with this ProgressTypeDialog.
+     * @return An instance of the ProgressTypeDialog.
+     */
     public static ProgressTypeDialog getInstance(PopupDialog popupDialog) {
         return new ProgressTypeDialog(popupDialog);
     }
 
+    /**
+     * Creates a new ProgressDialog instance.
+     *
+     * @return A new ProgressDialog instance.
+     */
     public ProgressDialog createProgressDialog() {
         return ProgressDialog.getInstance(this);
     }
 
+    /**
+     * Creates a new LottieDialog instance.
+     *
+     * @return A new LottieDialog instance.
+     */
     public LottieDialog createLottieDialog() {
         return LottieDialog.getInstance(this);
     }
