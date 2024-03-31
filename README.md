@@ -1,62 +1,80 @@
 [![Maven Central](https://img.shields.io/maven-central/v/com.saadahmedev.popup-dialog/popup-dialog.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22com.saadahmedev.popup-dialog%22%20AND%20a:%22popup-dialog%22)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 <a href="https://android-arsenal.com/api?level=21"><img alt="API" src="https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat"/></a>
-<a href="https://github.com/saadahmedscse/shortintent"><img alt="API" src="https://badges.frapsoft.com/os/v1/open-source.png?v=103"/></a>
-<a href="https://github.com/saadahmedscse/shortintent/graphs/traffic"><img alt="Total Clones" src="https://img.shields.io/badge/Clones-108-orange"/></a>
-<a href="[https://github.com/rrsaikat/CodeChallengeByShikho/graphs/traffic](https://github.com/saadahmedscse/shortintent/graphs/traffic)"><img alt="Total Views" src="https://img.shields.io/badge/Views-236-brightgreen"/></a>
 
 # Android Popup Dialog
-Getting tired by writing and coding default progress bar and custom popup dialog? Android Popup Dialog is a lightweight and easy to use Android library that provides you to make many kinds of dialog [Popup and Progress] by writing just some lines code. You don't have to design manually. You can customize every dialog and every properties of it's manually.
-* Min SDK 21 (Android Kitkat 5.0)
-* Written in Java
-* Compatible for both Java and Kotlin
 
-## Features
-* Default circular progress bar dialog
-* Android default alert dialog
-* IOS default popup dialog
-* Stylish standard dialog
-* Progress dialog with lottie animation
-* Success dialog
-* Alert dialog
-* Failed dialog
+Android Popup Dialog is a versatile and user-friendly Android library designed to simplify the creation of various types
+of dialogs, including popups and progress dialogs. With just a few lines of code, you can effortlessly implement
+different types of dialogs without the need for manual design. This library offers extensive customization options,
+allowing you to tailor each dialog to suit your application's requirements.
 
-## Installation
+```jql
+Min SDK           : 21 - Android LOLLIPOP {5}
+Max SDK           : 34 - Android UPSIDE_DOWN_CAKE {14}
+Language          : Java
+Compatible        : Java, Kotlin
+Repository        : Maven Central
+Latest Version    : 2.0.0
+License           : Apache 2.0
+```
 
-Add the dependency to your module build.gradle:
+Key Features
+------------
+* <b>Lightweight and Easy to Use:</b> Simplifies the creation of dialogs with minimal coding effort.
+* <b>Versatile Dialog Types:</b> Offers a variety of dialog types, including circular progress bars, default alert
+  dialogs, IOS-style popups, stylish standard dialogs, and more.
+* <b>Customization Options:</b> Provides extensive customization options for every dialog type, allowing you to
+  customize properties such as colors, text, animations, and more.
+* <b>Written in Java:</b> Developed using Java for maximum compatibility and ease of integration.
+* <b>Supports Kotlin:</b> Compatible with both Java and Kotlin programming languages.
+* <b>Minimum SDK Version 21:</b> Compatible with Android Kitkat 5.0 and above.
+
+Usage
+-----
+To start using Android Popup Dialog in your project, simply include the library in your dependencies and follow the provided documentation for usage instructions and examples. Enjoy hassle-free dialog creation and enhance your user experience with minimal effort.
+
+Get Started
+-----------
+* Enable Data Binding feature:
 ```groovy
-dependencies {
+android {
     ...
-    implementation 'com.saadahmedev.popup-dialog:popup-dialog:1.0.5'
+    buildFeatures {
+        dataBinding true
+    }
 }
 ```
 
-## Usage
-### Styles :
-`Styles.PROGRESS`  
-`Styles.IOS`  
-`Styles.ANDROID_DEFAULT`  
-`Styles.STANDARD`  
-`Styles.LOTTIE_ANIMATION`  
-`Styles.SUCCESS`  
-`Styles.FAILED`  
-`Styles.ALERT`  
+* Add the dependency to your module build.gradle:
 
-### Implementation :
+```groovy
+dependencies {
+    ...
+    implementation 'com.saadahmedev.popup-dialog:popup-dialog:2.0.0'
+}
+```
+
+Implementation
+--------------
+
+To see the Brief Implementation, please <a href="BRIEF.md">Click Here</a>
+
 <table>
 <tr>
-<th> PROGRESS </th>
+<th> Default Progress Dialog </th>
 <th> Result </th>
 </tr>
 <tr>
 <td>
 
 ```java
-PopupDialog.getInstance(this)
-    .setStyle(Styles.PROGRESS)
-    .setProgressDialogTint(R.color.color_red)
-    .setCancelable(false)
-    .showDialog();
+PopupDialog.getInstance(context)
+    .progressDialogBuilder()
+    .createProgressDialog()
+    .setTint(R.color.red)
+    .build()
+    .show();
 ```
 
 </td>
@@ -70,21 +88,19 @@ PopupDialog.getInstance(this)
 
 <table>
 <tr>
-<th> LOTTIE_ANIMATION </th>
+<th> Lottie Animation Progress Dialog </th>
 <th> Result </th>
 </tr>
 <tr>
 <td>
 
 ```java
-PopupDialog.getInstance(this)
-    .setStyle(Styles.LOTTIE_ANIMATION)
-    //Required if no RawRes
-    .setLottieAssetName("technologies.json")
-    //Required if no Asset
-    .setLottieRawRes(R.raw.technologies)
-    .setCancelable(false)
-    .showDialog();
+PopupDialog.getInstance(context)
+    .progressDialogBuilder()
+    .createLottieDialog()
+    .setRawRes(R.raw.success)
+    .build()
+    .show();
 ```
 
 </td>
@@ -98,32 +114,33 @@ PopupDialog.getInstance(this)
 
 <table>
 <tr>
-<th> STANDARD </th>
+<th> Standard Dialog </th>
 <th> Result </th>
 </tr>
 <tr>
 <td>
 
 ```java
-PopupDialog.getInstance(this)
-    .setStyle(Styles.STANDARD)
+PopupDialog.getInstance(context)
+    .standardDialogBuilder()
+    .createStandardDialog()
     .setHeading("Logout")
-    .setDescription("Are you sure you want to logout?"+
-        " This action cannot be undone")
-    .setPopupDialogIcon(R.drawable.ic_logout)
-    .setPopupDialogIconTint(R.color.color_red)
-    .setCancelable(false)
-    .showDialog(new OnDialogButtonClickListener() {
+    .setDescription("Are you sure you want to logout?" +
+                            " This action cannot be undone")
+    .setIcon(R.drawable.ic_logout)
+    .setIconColor(R.color.purple_200)
+    .build(new StandardDialogActionListener() {
         @Override
-        public void onPositiveClicked(Dialog dialog) {
-            super.onPositiveClicked(dialog);
+        public void onPositiveButtonClicked(Dialog dialog) {
+          dialog.dismiss();
         }
-
+      
         @Override
-        public void onNegativeClicked(Dialog dialog) {
-            super.onNegativeClicked(dialog);
+        public void onNegativeButtonClicked(Dialog dialog) {
+          dialog.dismiss();
         }
-    });
+    })
+    .show();
 ```
 
 </td>
@@ -137,30 +154,31 @@ PopupDialog.getInstance(this)
 
 <table>
 <tr>
-<th> IOS </th>
+<th> IOS Dialog </th>
 <th> Result </th>
 </tr>
 <tr>
 <td>
 
 ```java
-PopupDialog.getInstance(this)
-    .setStyle(Styles.IOS)
+PopupDialog.getInstance(context)
+    .standardDialogBuilder()
+    .createIOSDialog()
     .setHeading("Logout")
-    .setDescription("Are you sure you want to logout?"+
-        " This action cannot be undone")
-    .setCancelable(false)
-    .showDialog(new OnDialogButtonClickListener() {
+    .setDescription("Are you sure you want to logout?" +
+                            " This action cannot be undone")
+    .build(new StandardDialogActionListener() {
         @Override
-        public void onPositiveClicked(Dialog dialog) {
-            super.onPositiveClicked(dialog);
+        public void onPositiveButtonClicked(Dialog dialog) {
+          dialog.dismiss();
         }
-
+      
         @Override
-        public void onNegativeClicked(Dialog dialog) {
-            super.onNegativeClicked(dialog);
+        public void onNegativeButtonClicked(Dialog dialog) {
+          dialog.dismiss();
         }
-    });
+  })
+  .show();
 ```
 
 </td>
@@ -174,30 +192,31 @@ PopupDialog.getInstance(this)
 
 <table>
 <tr>
-<th> ANDROID_DEFAULT </th>
+<th> Default Alert Dialog </th>
 <th> Result </th>
 </tr>
 <tr>
 <td>
 
 ```java
-PopupDialog.getInstance(this)
-    .setStyle(Styles.ANDROID_DEFAULT)
+PopupDialog.getInstance(context)
+    .standardDialogBuilder()
+    .createAlertDialog()
     .setHeading("Logout")
-    .setDescription("Are you sure you want to logout?"+
-        " This action cannot be undone")
-    .setCancelable(false)
-    .showDialog(new OnDialogButtonClickListener() {
+    .setDescription("Are you sure you want to logout?" +
+                            " This action cannot be undone")
+    .build(new StandardDialogActionListener() {
         @Override
-        public void onPositiveClicked(Dialog dialog) {
-            super.onPositiveClicked(dialog);
+        public void onPositiveButtonClicked(Dialog dialog) {
+          dialog.dismiss();
         }
-
+      
         @Override
-        public void onNegativeClicked(Dialog dialog) {
-            super.onNegativeClicked(dialog);
+        public void onNegativeButtonClicked(Dialog dialog) {
+          dialog.dismiss();
         }
-    });
+  })
+  .show();
 ```
 
 </td>
@@ -211,25 +230,21 @@ PopupDialog.getInstance(this)
 
 <table>
 <tr>
-<th> SUCCESS </th>
+<th> Success Dialog </th>
 <th> Result </th>
 </tr>
 <tr>
 <td>
 
 ```java
-PopupDialog.getInstance(this)
-    .setStyle(Styles.SUCCESS)
+PopupDialog.getInstance(context)
+    .statusDialogBuilder()
+    .createSuccessDialog()
     .setHeading("Well Done")
-    .setDescription("You have successfully"+
+    .setDescription("You have successfully" +
         " completed the task")
-    .setCancelable(false)
-    .showDialog(new OnDialogButtonClickListener() {
-        @Override
-        public void onDismissClicked(Dialog dialog) {
-            super.onDismissClicked(dialog);
-        }
-    });
+    .build(Dialog::dismiss)
+    .show();
 ```
 
 </td>
@@ -243,25 +258,21 @@ PopupDialog.getInstance(this)
 
 <table>
 <tr>
-<th> ALERT </th>
+<th> Warning Dialog </th>
 <th> Result </th>
 </tr>
 <tr>
 <td>
 
 ```java
-PopupDialog.getInstance(this)
-    .setStyle(Styles.ALERT)
+PopupDialog.getInstance(context)
+    .statusDialogBuilder()
+    .createWarningDialog()
     .setHeading("Pending")
-    .setDescription("You verification is under"+
+    .setDescription("You verification is under" +
         " observation. Try again later.")
-    .setCancelable(false)
-    .showDialog(new OnDialogButtonClickListener() {
-        @Override
-        public void onDismissClicked(Dialog dialog) {
-            super.onDismissClicked(dialog);
-        }
-    });
+    .build(Dialog::dismiss)
+    .show();
 ```
 
 </td>
@@ -275,25 +286,21 @@ PopupDialog.getInstance(this)
 
 <table>
 <tr>
-<th> FAILED </th>
+<th> Error Dialog </th>
 <th> Result </th>
 </tr>
 <tr>
 <td>
 
 ```java
-PopupDialog.getInstance(this)
-    .setStyle(Styles.FAILED)
+PopupDialog.getInstance(context)
+    .statusDialogBuilder()
+    .createErrorDialog()
     .setHeading("Uh-Oh")
-    .setDescription("Unexpected error occurred."+
+    .setDescription("Unexpected error occurred." +
         " Try again later.")
-    .setCancelable(false)
-    .showDialog(new OnDialogButtonClickListener() {
-        @Override
-        public void onDismissClicked(Dialog dialog) {
-            super.onDismissClicked(dialog);
-        }
-    });
+    .build(Dialog::dismiss)
+    .show();
 ```
 
 </td>
@@ -305,104 +312,20 @@ PopupDialog.getInstance(this)
 </tr>
 </table>
 
-All Properties [REQUIRED & NON-REQUIRED]
-----------------------------------------
-<table>
-<tr>
-<th width="1200px"> REQUIRED & NON-REQUIRED PROPERTIES </th>
-</tr>
-<tr>
-<td>
-
-```java
-//Let Dialog types with A, B and C
-//---Dialog Type A--->[PROGRESS, LOTTIE_ANIMATION]
-//---Dialog Type B--->[IOS, ANDROID_DEFAULT, STANDARD]
-//---Dialog Type C--->[SUCCESS, FAILED, ALERT]
-
-//Created object for later usage to dismiss the dialog
-PopupDialog dialog = PopupDialog.getInstance(this); //Context is required for creating instance
-
-dialog.setStyle(Styles.SUCCESS) //Required for Dialog Type [A, B, C]
-
-    //-----------------------------HEADING-DESCRIPTION-----------------------------//
-    .setHeading("Well Done") //Required for only [B, C]
-    .setDescription("You have successfully completed the task") //Required only for [B, C]
-    .setHeadingTextColor(R.color.black) //Non-Required. Work only for [B, C]
-    .setDescriptionTextColor(R.color.grey) //Non-Required. Work only for [B, C]
-
-    //-----------------------------ICON & TINT-----------------------------//
-    .setPopupDialogIcon(R.drawable.ic_logout) //Non-Required. Work only for [B]
-    .setPopupDialogIconTint(R.color.red) //Non-Required. Work only for [B]
-    .setProgressDialogTint(R.color.green) //Non-Required. Work only for [PROGRESS]
-
-    //-----------------------------TIMEOUT-----------------------------//
-    .setTimeout(1) //Non-Required. Work only for [A, B, C] excluding [LOTTIE_ANIMATION]
-    .setLottieDialogTimeout(5) //Non-Required. Work only for [LOTTIE_ANIMATION]
-
-    //-----------------------------CANCELABLE-----------------------------//
-    .setCancelable(false) //Non-Required. Work only for [A, B, C]
-
-    //-----------------------------DIALOG ACTION BUTTON TEXT-----------------------------//
-    .setPositiveButtonText("Confirm") //Non-Required. Work only for [B]
-    .setNegativeButtonText("Deny") //Non-Required. Work only for [B]
-    .setDismissButtonText("Close") //Non-Required. Work only for [C]
-
-    //-----------------------------DIALOG ACTION BUTTON TEXT COLOR-----------------------------//
-    .setPositiveButtonTextColor(R.color.blue) //Non-Required. Work only for [B]
-    .setNegativeButtonTextColor(R.color.red) //Non-Required. Work only for [B]
-    .setDismissButtonTextColor(R.color.green)//Non-Required. Work only for [C]
-
-    //-----------------------------DIALOG ACTION BUTTON BACKGROUND-----------------------------//
-    .setPositiveButtonBackground(R.drawable.bg_yellow) //Non-Required. Work only for [B]
-    .setNegativeButtonBackground(R.drawable.bg_light_grey) //Non-Required. Work only for [B]
-    .setDismissButtonBackground(R.drawable.bg_black) //Non-Required. Work only for [C]
-
-    //-----------------------------LOTTIE ANIMATION LINKING-----------------------------//
-    .setLottieRawRes(R.raw.technologies) //Required if not Asset. Work only for [LOTTIE_ANIMATION]
-    .setLottieAssetName("technologies.json") //Required if no RawRes. Work only for [LOTTIE_ANIMATION]
-    .setLottieDialogTimeout(5) //Non-Required. Work only for [LOTTIE_ANIMATION] Unit: Second
-    .setLottieAnimationSpeed(5F) //Non-Required. Work only for [LOTTIE_ANIMATION] Unit: Float
-    .setLottieRepeatCount(500) //Non-Required. Work only for [LOTTIE_ANIMATION] Unit: Int
-
-    .showDialog() //Required. Work only for [A]
-
-    .showDialog(new OnDialogButtonClickListener() { //Required. Work only for [B, C]
-        @Override
-        public void onPositiveClicked(Dialog dialog) { //Non-Required. Work only for [B]
-            /*
-             Calling super keyword will dismiss the dialog
-             Don't call super keyword if not needed
-            */
-            super.onPositiveClicked(dialog);
-        }
-
-        @Override
-        public void onNegativeClicked(Dialog dialog) { //Non-Required. Work only for [B]
-            /*
-             Calling super keyword will dismiss the dialog
-             Don't call super keyword if not needed
-            */
-            super.onNegativeClicked(dialog);
-        }
-
-        @Override
-            public void onDismissClicked(Dialog dialog) { //Non-Required. Work only for [C]
-                /*
-                 Calling super keyword will dismiss the dialog
-                 Don't call super keyword if not needed
-                */
-                super.onDismissClicked(dialog);
-            }
-        });
-```
-
-</td>
-</tr>
-</table>
-
 Changelog
 ---------
+
+* **2.0.0**
+  * **[MEGA UPDATE - HUGE CHANGES]**
+  * Made 95.99% Customizable
+  * Everything is customizable now
+  * Code refactor
+  * Added new structure and architecture in the library
+  * Made more developer friendly
+  * Improved for less coding
+  * Whole class structure has been changed
+  * Add lots of functions to customize in less time
+  * Handled views with data using Data Binding
 * **1.0.5**
   * Fixed issue "Default Dialog keeping an instance of PopupDialog always"
 * **1.0.3**
@@ -414,12 +337,19 @@ Changelog
 * **1.0.1**
   * Set positive and negative button text programmatically
 * **1.0.0**
-    * Initial release
+  * Initial release
+
+Contribution
+------------
+Contributions to the Android Popup Dialog library are welcome! Whether it's bug fixes, new features, or enhancements, your contributions help make the library even better for the community. Visit the GitHub repository to contribute and collaborate with other developers.
 
 License
 -------
+
+Android Popup Dialog is licensed under the Apache 2.0 License, allowing for both personal and commercial use. Feel free to use, modify, and distribute the library according to the terms of the license.
+
 ```
-Copyright 2022 Saad Ahmed
+Copyright 2018-2024 Saad Ahmed
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
