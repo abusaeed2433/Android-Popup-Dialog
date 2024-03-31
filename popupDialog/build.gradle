@@ -56,7 +56,12 @@ android {
     }
 }
 
-def artifactVersion = "2.0.0-SNAPSHOTS"
+def artifactVersion = "2.0.0"
+
+tasks.register('sourceJar', Jar) {
+    from android.sourceSets.main.java.srcDirs
+    archiveClassifier.set("sources")
+}
 
 publishing {
     publications {
@@ -64,7 +69,7 @@ publishing {
             groupId 'com.saadahmedev.popup-dialog'
             artifactId 'popup-dialog'
             version artifactVersion
-            artifact("$buildDir/outputs/aar/popupDialog-sources.jar")
+            artifact(sourceJar)
             artifact("$buildDir/outputs/aar/popupDialog-release.aar")
 
             pom {
