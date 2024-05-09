@@ -2,17 +2,13 @@ package com.caffeine.popupdialog;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Dialog;
 import android.os.Bundle;
 
 import com.caffeine.popupdialog.databinding.ActivityMainBinding;
-import com.saadahmedsoft.popupdialog.PopupDialog;
-import com.saadahmedsoft.popupdialog.Styles;
-import com.saadahmedsoft.popupdialog.listener.OnDialogButtonClickListener;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ActivityMainBinding binding = null;
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,5 +99,4 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
-
 }

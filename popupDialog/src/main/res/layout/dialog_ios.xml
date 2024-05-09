@@ -1,53 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/root_layout"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+<!--
+    Copyright 2018-2024 Saad Ahmed
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="dialog"
+            type="android.app.Dialog" />
+
+        <variable
+            name="listener"
+            type="com.saadahmedev.popupdialog.listener.StandardDialogActionListener" />
+
+        <variable
+            name="item"
+            type="com.saadahmedev.popupdialog.dto.IOSDialogData" />
+
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/root_layout"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:background="@drawable/bg_white_10"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:background="@drawable/bg_white_10">
 
+        <View
+            android:layout_width="300dp"
+            android:layout_height="1dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_heading"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:fontFamily="@font/bold"
             android:gravity="center"
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
-            android:textColor="@color/text_color"
+            android:text="@{item.heading}"
+            android:dialogTextColor="@{item.headingTextColor}"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Logout" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_description"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:fontFamily="@font/regular"
             android:gravity="center"
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
-            android:textColor="@color/text_color_light"
+            android:text="@{item.description}"
+            android:dialogTextColor="@{item.descriptionTextColor}"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_heading"
-            tools:text="Are you sure you want to logout? This action cannot be undone." />
+            app:layout_constraintTop_toBottomOf="@id/tv_heading" />
 
         <View
             android:id="@+id/v_divider"
@@ -58,9 +88,11 @@
             app:layout_constraintTop_toBottomOf="@id/tv_description" />
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="50dp"
             android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/v_divider">
 
             <TextView
@@ -71,8 +103,9 @@
                 android:background="@drawable/ripple_bg_white_10"
                 android:fontFamily="@font/medium"
                 android:gravity="center"
-                android:text="@string/negative"
-                android:textColor="@color/colorBlue"
+                android:onClick="@{() -> listener.onNegativeButtonClicked(dialog)}"
+                android:text="@{item.negativeButtonText}"
+                android:dialogTextColor="@{item.negativeButtonTextColor}"
                 android:textSize="16sp" />
 
             <View
@@ -88,13 +121,13 @@
                 android:background="@drawable/ripple_bg_white_10"
                 android:fontFamily="@font/bold"
                 android:gravity="center"
-                android:text="@string/positive"
-                android:textColor="@color/colorBlue"
+                android:onClick="@{() -> listener.onPositiveButtonClicked(dialog)}"
+                android:text="@{item.positiveButtonText}"
+                android:dialogTextColor="@{item.positiveButtonTextColor}"
                 android:textSize="16sp" />
 
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
-
+</layout>
