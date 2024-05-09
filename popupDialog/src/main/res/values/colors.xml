@@ -25,6 +25,7 @@
 
     <color name="static_main">#215C5C</color>
     <color name="static_white_dark">#FFFFFF</color>
+    <color name="static_white">#FFFFFF</color>
     <color name="static_grey">#5E5E5E</color>
     <color name="static_black">#000000</color>
     <color name="static_transparent">#00000000</color>
