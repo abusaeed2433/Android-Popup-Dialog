@@ -90,6 +90,10 @@ public class AlertDialog extends BaseStandardDialog<AlertDialog, DialogAlertBind
 
         binding.setDialog(super.getDialog());
         binding.setListener(listener);
+
+        super.setPositiveButtonTextColor(super.positiveButtonTextColor == null ? R.color.purple_light : super.positiveButtonTextColor);
+        super.setNegativeButtonTextColor(super.negativeButtonTextColor == null ? R.color.purple_light : super.negativeButtonTextColor);
+
         binding.setItem(
                 new AlertDialogData(
                         super.heading,
