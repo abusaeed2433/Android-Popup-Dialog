@@ -255,6 +255,10 @@ public class StandardDialog extends BaseStandardDialog<StandardDialog, DialogSta
 
         binding.setDialog(super.getDialog());
         binding.setListener(listener);
+
+        super.setPositiveButtonTextColor(super.positiveButtonTextColor == null ? R.color.colorWhite : super.positiveButtonTextColor);
+        super.setNegativeButtonTextColor(super.negativeButtonTextColor == null ? R.color.colorBlack : super.negativeButtonTextColor);
+
         binding.setItem(
                 new StandardDialogData(
                         this.icon,
