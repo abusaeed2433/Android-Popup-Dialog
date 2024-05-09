@@ -22,4 +22,5 @@
     <string name="dismiss">Dismiss</string>
     <string name="home_image">Home image</string>
     <string name="logout_message">Are you sure you want to logout? This action can\'t be undone.</string>
+    <string name="status_message">You have successfully completed the task</string>
 </resources>

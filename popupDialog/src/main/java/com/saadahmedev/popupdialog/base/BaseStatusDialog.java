@@ -277,8 +277,8 @@ public class BaseStatusDialog<T, VB extends ViewDataBinding> extends BaseShapeGe
         actionButtonText = actionButtonText == null ? "Submit" : actionButtonText;
 
         actionButtonTextColor = actionButtonTextColor == null ? super.resToColorInt(R.color.static_white) : actionButtonTextColor;
-        headingTextColor = headingTextColor == null ? super.resToColorInt(R.color.colorDarkGrey) : headingTextColor;
-        descriptionTextColor = descriptionTextColor == null ? super.resToColorInt(R.color.colorGrey) : descriptionTextColor;
+        headingTextColor = headingTextColor == null ? super.resToColorInt(R.color.text_color) : headingTextColor;
+        descriptionTextColor = descriptionTextColor == null ? super.resToColorInt(R.color.text_color_dim) : descriptionTextColor;
 
         if (lottieRaw != null) ((DialogStatusBinding) binding).lottieIcon.setAnimation(lottieRaw);
         else if (lottieAsset != null) ((DialogStatusBinding) binding).lottieIcon.setAnimation(lottieAsset);

@@ -17,7 +17,8 @@
 -->
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -68,6 +69,7 @@
             android:gravity="center"
             android:text="@{item.heading}"
             android:textSize="22sp"
+            tools:text="Well Done"
             android:dialogTextColor="@{item.headingTextColor}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -81,6 +83,7 @@
             android:fontFamily="@font/regular"
             android:gravity="center"
             android:text="@{item.description}"
+            tools:text="@string/status_message"
             android:textSize="16sp"
             android:dialogTextColor="@{item.descriptionTextColor}"
             app:layout_constraintEnd_toEndOf="parent"
@@ -97,6 +100,8 @@
             android:gravity="center"
             android:onClick="@{() -> listener.onStatusActionClicked(dialog)}"
             android:text="@{item.actionButtonText}"
+            tools:textColor="@color/colorWhite"
+            tools:text="Dismiss"
             android:textSize="16sp"
             android:dialogTextColor="@{item.actionButtonTextColor}"
             app:layout_constraintEnd_toEndOf="parent"
