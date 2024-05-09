@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setClickListener(){
+
         binding.buttonProgress.setOnClickListener(view ->{
             PopupDialog.getInstance(this)
                     .setStyle(Styles.PROGRESS)
@@ -32,61 +33,23 @@ public class MainActivity extends AppCompatActivity {
         });
 
         binding.buttonIos.setOnClickListener(view -> {
-            PopupDialog.getInstance(this)
-                    .setStyle(Styles.IOS)
-                    .setHeading("Logout")
-                    .setDescription("Are you sure you want to logout? This action cannot be undone")
-                    .setCancelable(false)
-                    .showDialog(new OnDialogButtonClickListener() {
-                        @Override
-                        public void onPositiveClicked(Dialog dialog) {
-                            super.onPositiveClicked(dialog);
-                        }
-
-                        @Override
-                        public void onNegativeClicked(Dialog dialog) {
-                            super.onNegativeClicked(dialog);
-                        }
-                    });
+            showPopupTwoButton(
+                    Styles.IOS
+            );
         });
+
         binding.buttonDefault.setOnClickListener(view -> {
-            PopupDialog.getInstance(this)
-                    .setStyle(Styles.ANDROID_DEFAULT)
-                    .setHeading("Logout")
-                    .setDescription("Are you sure you want to logout? This action cannot be undone")
-                    .setCancelable(false)
-                    .showDialog(new OnDialogButtonClickListener() {
-                        @Override
-                        public void onPositiveClicked(Dialog dialog) {
-                            super.onPositiveClicked(dialog);
-                        }
-
-                        @Override
-                        public void onNegativeClicked(Dialog dialog) {
-                            super.onNegativeClicked(dialog);
-                        }
-                    });
+            showPopupTwoButton(
+                    Styles.ANDROID_DEFAULT
+            );
         });
+
         binding.buttonStandard.setOnClickListener(view -> {
-            PopupDialog.getInstance(this)
-                    .setStyle(Styles.STANDARD)
-                    .setHeading("Logout")
-                    .setDescription("Are you sure you want to logout? This action cannot be undone")
-                    .setPopupDialogIcon(R.drawable.baseline_logout_24)
-                    .setPopupDialogIconTint(com.saadahmedsoft.popupdialog.R.color.colorRed)
-                    .setCancelable(false)
-                    .showDialog(new OnDialogButtonClickListener() {
-                        @Override
-                        public void onPositiveClicked(Dialog dialog) {
-                            super.onPositiveClicked(dialog);
-                        }
-
-                        @Override
-                        public void onNegativeClicked(Dialog dialog) {
-                            super.onNegativeClicked(dialog);
-                        }
-                    });
+            showPopupTwoButton(
+                    Styles.STANDARD
+            );
         });
+
         binding.buttonLottie.setOnClickListener(view -> {
             PopupDialog.getInstance(this)
                     .setStyle(Styles.LOTTIE_ANIMATION)
@@ -94,46 +57,51 @@ public class MainActivity extends AppCompatActivity {
                     .setCancelable(true)
                     .showDialog();
         });
+
         binding.buttonSuccess.setOnClickListener(view -> {
-            PopupDialog.getInstance(this)
-                    .setStyle(Styles.SUCCESS)
-                    .setHeading("Well Done")
-                    .setDescription("You have successfully completed the task")
-                    .setCancelable(false)
-                    .showDialog(new OnDialogButtonClickListener() {
-                        @Override
-                        public void onDismissClicked(Dialog dialog) {
-                            super.onDismissClicked(dialog);
-                        }
-                    });
-        });
-        binding.buttonFailed.setOnClickListener(view -> {
-            PopupDialog.getInstance(this)
-                    .setStyle(Styles.ALERT)
-                    .setHeading("Pending")
-                    .setDescription("You verification is under observation. Try again later.")
-                    .setCancelable(false)
-                    .showDialog(new OnDialogButtonClickListener() {
-                        @Override
-                        public void onDismissClicked(Dialog dialog) {
-                            super.onDismissClicked(dialog);
-                        }
-                    });
-        });
-        binding.buttonAlert.setOnClickListener(view -> {
-            PopupDialog.getInstance(this)
-                    .setStyle(Styles.FAILED)
-                    .setHeading("Uh-Oh")
-                    .setDescription("Unexpected error occurred. Try again later.")
-                    .setCancelable(false)
-                    .showDialog(new OnDialogButtonClickListener() {
-                        @Override
-                        public void onDismissClicked(Dialog dialog) {
-                            super.onDismissClicked(dialog);
-                        }
-                    });
+            showPopup(Styles.SUCCESS,"Well Done","You have successfully completed the task");
         });
 
+        binding.buttonFailed.setOnClickListener(view -> {
+            showPopup(Styles.ALERT,"Pending","You verification is under observation. Try again later.");
+        });
+
+        binding.buttonAlert.setOnClickListener(view -> {
+            showPopup(Styles.FAILED,"Uh-Oh","Unexpected error occurred. Try again later.");
+        });
+
+    }
+
+    private void showPopupTwoButton(Styles style){
+        PopupDialog.getInstance(this)
+                .setStyle(style)
+                .setHeading("Logout")
+                .setDescription("Are you sure you want to logout? This action cannot be undone")
+                .setCancelable(false)
+                .showDialog(new OnDialogButtonClickListener() {
+                    @Override
+                    public void onPositiveClicked(Dialog dialog) {
+                        super.onPositiveClicked(dialog);
+                    }
+
+                    @Override
+                    public void onNegativeClicked(Dialog dialog) {
+                        super.onNegativeClicked(dialog);
+                    }
+                });
+    }
+    private void showPopup(Styles style, String heading, String description){
+        PopupDialog.getInstance(this)
+                .setStyle(style)
+                .setHeading(heading)
+                .setDescription(description)
+                .setCancelable(false)
+                .showDialog(new OnDialogButtonClickListener() {
+                    @Override
+                    public void onDismissClicked(Dialog dialog) {
+                        super.onDismissClicked(dialog);
+                    }
+                });
     }
 
 }
