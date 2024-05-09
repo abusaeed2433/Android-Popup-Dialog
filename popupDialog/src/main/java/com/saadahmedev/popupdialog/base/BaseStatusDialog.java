@@ -274,7 +274,7 @@ public class BaseStatusDialog<T, VB extends ViewDataBinding> extends BaseShapeGe
             else ((DialogStatusBinding) binding).btnDismiss.setBackground(shape);
         }
 
-        actionButtonText = actionButtonText == null ? "Submit" : actionButtonText;
+        actionButtonText = actionButtonText == null ? "Dismiss" : actionButtonText;
 
         actionButtonTextColor = actionButtonTextColor == null ? super.resToColorInt(R.color.static_white) : actionButtonTextColor;
         headingTextColor = headingTextColor == null ? super.resToColorInt(R.color.text_color) : headingTextColor;
