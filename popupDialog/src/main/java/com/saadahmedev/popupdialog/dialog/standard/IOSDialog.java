@@ -90,6 +90,10 @@ public class IOSDialog extends BaseStandardDialog<IOSDialog, DialogIosBinding> {
 
         binding.setDialog(super.getDialog());
         binding.setListener(listener);
+
+        super.setPositiveButtonTextColor(super.positiveButtonTextColor == null ? R.color.colorBlue : super.positiveButtonTextColor);
+        super.setNegativeButtonTextColor(super.negativeButtonTextColor == null ? R.color.colorBlue : super.negativeButtonTextColor);
+
         binding.setItem(
                 new IOSDialogData(
                         super.heading,

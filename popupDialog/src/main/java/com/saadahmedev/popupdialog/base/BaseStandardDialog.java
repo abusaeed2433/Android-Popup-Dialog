@@ -414,8 +414,8 @@ public class BaseStandardDialog<T, VB extends ViewDataBinding> extends BaseShape
         positiveButtonText = positiveButtonText == null ? "Submit" : positiveButtonText;
         negativeButtonText = negativeButtonText == null ? "Cancel" : negativeButtonText;
 
-        positiveButtonTextColor = positiveButtonTextColor == null ? super.resToColorInt(R.color.colorWhite) : positiveButtonTextColor;
-        negativeButtonTextColor = negativeButtonTextColor == null ? super.resToColorInt(R.color.colorBlack) : negativeButtonTextColor;
+//        positiveButtonTextColor = positiveButtonTextColor == null ? super.resToColorInt(R.color.colorWhite) : positiveButtonTextColor;
+//        negativeButtonTextColor = negativeButtonTextColor == null ? super.resToColorInt(R.color.colorBlack) : negativeButtonTextColor;
 
         headingTextColor = headingTextColor == null ? super.resToColorInt(R.color.text_color) : headingTextColor;
         descriptionTextColor = descriptionTextColor == null ? super.resToColorInt(R.color.text_color) : descriptionTextColor;
