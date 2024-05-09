@@ -16,7 +16,8 @@
 -->
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -57,6 +58,7 @@
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
             android:text="@{item.heading}"
+            tools:text="LogOut"
             android:dialogTextColor="@{item.headingTextColor}"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -73,6 +75,7 @@
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
             android:text="@{item.description}"
+            tools:text="@string/logout_message"
             android:dialogTextColor="@{item.descriptionTextColor}"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -105,6 +108,8 @@
                 android:gravity="center"
                 android:onClick="@{() -> listener.onNegativeButtonClicked(dialog)}"
                 android:text="@{item.negativeButtonText}"
+                tools:textColor="@color/colorBlue"
+                tools:text="Cancel"
                 android:dialogTextColor="@{item.negativeButtonTextColor}"
                 android:textSize="16sp" />
 
@@ -123,6 +128,8 @@
                 android:gravity="center"
                 android:onClick="@{() -> listener.onPositiveButtonClicked(dialog)}"
                 android:text="@{item.positiveButtonText}"
+                tools:textColor="@color/colorBlue"
+                tools:text="Submit"
                 android:dialogTextColor="@{item.positiveButtonTextColor}"
                 android:textSize="16sp" />
 
